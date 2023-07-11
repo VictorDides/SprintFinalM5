@@ -56,19 +56,23 @@ INSERT INTO operaciones (id_operario, id_usuario, fecha, evaluacion) VALUES
   (5, 1, '2023-07-10', 3);
   
   # PREGUTAS
-#Seleccione las 3 operaciones con mejor evaluación.
+  
+# 1) Seleccione las 3 operaciones con mejor evaluación.
+
 SELECT *
 FROM operaciones
 ORDER BY evaluacion DESC
 LIMIT 3;
 
-#Seleccione las 3 operaciones con menos evaluación.
+# 2) Seleccione las 3 operaciones con menos evaluación.
+
 SELECT *
 FROM operaciones
 ORDER BY evaluacion ASC
 LIMIT 3;
 
-#Seleccione al operario que más soportes ha realizado.
+# 3) Seleccione al operario que más soportes ha realizado.
+
 -- Dentro de la tabla operaciones
 SELECT id_operario, COUNT(*) AS total_soportes
 FROM operaciones
@@ -82,7 +86,8 @@ FROM operarios
 ORDER BY veces_soporte DESC
 LIMIT 1;
 
-#Seleccione al cliente que menos veces ha utilizado la aplicación.
+# 4) Seleccione al cliente que menos veces ha utilizado la aplicación.
+
 -- Dentro de la tabla operaciones
 SELECT id_usuario, COUNT(*) AS total_requerimientos
 FROM operaciones
@@ -97,20 +102,23 @@ ORDER BY veces_utilizado ASC
 LIMIT 1;
 
 
-#Agregue 10 años a los tres primeros usuarios registrados.
+# 5) Agregue 10 años a los tres primeros usuarios registrados.
+
 UPDATE usuarios
 SET edad = edad + 10
 ORDER BY id
 LIMIT 3;
 
-#Renombre todas las columnas ‘correo electrónico’. El nuevo nombre debe ser email.
+# 6) Renombre todas las columnas ‘correo electrónico’. El nuevo nombre debe ser email.
+
 ALTER TABLE usuarios
 CHANGE correo email VARCHAR(50);
 
 ALTER TABLE operarios
 CHANGE correo email VARCHAR(50);
 
-#Seleccione solo los operarios mayores de 20 años.
+# 7) Seleccione solo los operarios mayores de 20 años.
+
 SELECT *
 FROM operarios
 WHERE edad > 20;
